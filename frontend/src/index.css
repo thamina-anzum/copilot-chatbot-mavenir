@@ -1,0 +1,196 @@
+:root {
+  --ink: #12202c;
+  --ink-soft: #3d5363;
+  --paper: #f4efe4;
+  --paper-2: #fffdf8;
+  --line: #d7cebc;
+  --navy: #1c3d5a;
+  --navy-2: #16324a;
+  --teal: #2a6f6a;
+  --amber: #8a5a12;
+  --amber-bg: #f4e3c4;
+  --green: #2d6a4f;
+  --red: #9b2c2c;
+  --shadow: 0 10px 30px rgba(18, 32, 44, 0.08);
+  font-family: "Segoe UI", "Iowan Old Style", Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+button, input, textarea { font: inherit; }
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100%;
+}
+
+.sidebar {
+  background: var(--navy);
+  color: #e8e0d0;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+.brand span { display: block; font-size: 20px; letter-spacing: 0; text-transform: none; margin-top: 6px; color: #fff; }
+
+.sidebar h2 {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b9c7d3;
+  margin: 0 0 10px;
+}
+
+.doc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.doc-list li {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.doc-list strong { display: block; color: #fff; }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.topbar p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+.chat {
+  flex: 1;
+  overflow: auto;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bubble {
+  max-width: 780px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+.bubble.user {
+  align-self: flex-end;
+  background: var(--navy);
+  color: #fff;
+}
+.bubble.assistant {
+  align-self: flex-start;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  white-space: normal;
+}
+.md-answer { white-space: normal; }
+.md-p { margin: 0 0 0.7em; }
+.md-p:last-child { margin-bottom: 0; }
+.md-heading { margin: 0 0 0.5em; font-size: 1.05em; }
+.md-list { margin: 0 0 0.8em; padding-left: 1.2em; }
+.md-list li { margin: 0.25em 0; }
+.bubble.abstained {
+  border-color: #dfc48a;
+  background: var(--amber-bg);
+  color: #5c3b0a;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.badge {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.badge.high { color: var(--green); border-color: #b7e4c7; }
+.badge.medium { color: var(--amber); border-color: #e6c78a; }
+.badge.low { color: var(--red); border-color: #f1b0b0; }
+
+.cite {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  background: #eef4f3;
+  color: var(--teal);
+  border: 1px solid #cfe0dd;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cite:hover { background: #dff0ee; }
+
+.evidence {
+  margin-top: 10px;
+  padding: 12px;
+  background: #f7f3ea;
+  border-left: 3px solid var(--teal);
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.composer {
+  padding: 16px 28px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-2);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+.composer textarea {
+  resize: none;
+  min-height: 56px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.composer button {
+  background: var(--navy);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 22px;
+  cursor: pointer;
+}
+.composer button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.loading { color: var(--ink-soft); font-style: italic; }
+.error { color: var(--red); padding: 0 28px; }
+
+@media (max-width: 860px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
