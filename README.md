@@ -480,16 +480,6 @@ Do not invent eval scores. If you have not run `evaluate.py`, say so.
 
 ---
 
-## Demo video
-
-Replace this with your recording (screen capture of UI + a 30 s Langfuse/Atlas walkthrough):
-
-**[Demo video — add your link here](https://youtu.be/YOUR_LINK_HERE)**
-
-Suggested 3–4 minute script: one grounded question → click citations → one abstention → sidebar specs → Langfuse `evidence_gate` → Atlas `messages` document.
-
----
-
 ## Design decisions / limitations
 
 **Decisions**
