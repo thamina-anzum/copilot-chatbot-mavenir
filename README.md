@@ -385,22 +385,6 @@ Covers ToC skip, tables/figures/procedures, RRF, BM25 tokenization, evidence-gat
 
 ---
 
-## `.env.example` configuration
-
-| Variable | Required? | Notes |
-|---|---|---|
-| `MONGODB_URI` | for persistence | Atlas `mongodb+srv://…` — URL-encode the password |
-| `MONGODB_DB_NAME` | optional | `rag-project` in the screenshots; code default is `3gpp_copilot` |
-| `GOOGLE_API_KEY` | **yes** | [Google AI Studio](https://aistudio.google.com/apikey) |
-| `GROQ_API_KEY` | recommended | [Groq console](https://console.groq.com/keys) — fallback on Gemini 429 |
-| `LANGFUSE_PUBLIC_KEY` / `SECRET_KEY` | optional | Empty = no tracing |
-| `QDRANT_MODE` | usually `embedded` | `server` with Docker Compose |
-| `EVIDENCE_THRESHOLD` | after calibration | Start `0.42` |
-| `GEMINI_MODEL` | usually no | `gemini-2.5-flash` |
-
-Never commit a filled `.env`.
-
----
 
 ## Example questions
 
@@ -503,6 +487,13 @@ Do not invent eval scores. If you have not run `evaluate.py`, say so.
 
 ---
 
+## Demo Link
+
+Demo link (Loom) : https://www.loom.com/share/5731fff62a4f48c5964cb6f8e2489570
+
+---
+
+
 ## Future improvements
 
 - Learned sparse retrieval (SPLADE / BGE-M3) instead of pickle BM25
@@ -528,5 +519,3 @@ curl -X POST http://127.0.0.1:8000/chat/message -H "Content-Type: application/js
 ```
 
 Expect `status: grounded` with citations on the first; `status: abstained` and the exact abstain sentence on the second.
-
-Full checklist (chunk quality, calibration, follow-ups, eval script): see [docs/PRESENTATION.md](docs/PRESENTATION.md).
